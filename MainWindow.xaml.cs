@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -90,7 +91,8 @@ namespace DownloadArquivos
             });
             thread.Start();
         }
-
+        decimal mbDown;
+        decimal mbTotal;
         private void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.Dispatcher.Invoke(() =>
@@ -98,7 +100,10 @@ namespace DownloadArquivos
                 double bytesIn = double.Parse(e.BytesReceived.ToString());
                 double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
                 double percentage = bytesIn / totalBytes * 100;
-                //pageHome.SystemUpdate.Content = "Downloaded " + e.BytesReceived + " of " + e.TotalBytesToReceive;
+                mbDown = e.BytesReceived / 1000000;
+                mbTotal = e.TotalBytesToReceive / 1000000;
+
+                label2.Content = "Download " + mbDown.ToString("n0") + " mb de " + mbTotal.ToString("n0") + " mb";
                 progressBar1.Value = int.Parse(Math.Truncate(percentage).ToString());
 
                 label1.Content = progressBar1.Value.ToString() + "%";
