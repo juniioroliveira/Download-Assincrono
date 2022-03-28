@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DownloadArquivos"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="400" Width="450">
+        Title="Download Assincrono" Height="400" Width="450">
     <Grid Margin="30 30">
         <StackPanel>
             <Grid>
@@ -38,6 +40,121 @@
                            />
                 </TextBlock>
             </Grid>
+            
+            <StackPanel Orientation="Horizontal"
+                        Height="auto"
+                        Width="auto"
+                        Margin="0 5"
+                        HorizontalAlignment="Center">
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical"
+                        Height="auto"
+                        Width="auto"
+                        Margin="0 5"
+                        HorizontalAlignment="Center">
+
+                <RadioButton 
+                    Name="cbFile"
+                    IsChecked="True"
+                    Unchecked="RadioButton_Unchecked"                     
+                    Checked="RadioButton_Checked">
+                    <RadioButton.Content>
+                        <StackPanel Orientation="Horizontal"
+                                    IsEnabled="True"
+                                    Name="spLocal">
+                            <materialDesign:PackIcon 
+                                Kind="File" 
+                                Foreground="DodgerBlue"
+                                Height="25"
+                                Width="25"/>
+
+                            <TextBox Height="30" Width="280"
+                                     Text=""
+                                    Name="tFile"/>
+
+                            <Button
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                    HorizontalAlignment="Left"
+                                    ToolTip="MaterialDesignFloatingActionMiniButton"
+                                    Height="28"
+                                    Width="28" 
+                                    Click="Button_Click">
+                                <materialDesign:PackIcon
+                                    Kind="Search"
+                                    Height="20"
+                                    Width="20" />
+                            </Button>
+                        </StackPanel>
+                    </RadioButton.Content>
+                </RadioButton>
+
+                <RadioButton 
+                        Name="cbWeb"
+                        Checked="RadioButton_Checked_1" 
+                        Unchecked="RadioButton_Unchecked_1">
+                    <RadioButton.Content>
+                        <StackPanel Orientation="Horizontal"
+                                    IsEnabled="False"
+                                    Name="spWeb">
+                            <materialDesign:PackIcon 
+                                Kind="World" 
+                                Foreground="DodgerBlue"
+                                Height="25"
+                                Width="25"/>
+
+                            <TextBox 
+                                Height="30" 
+                                Width="280"
+                                Name="tWeb" 
+                                Cursor="Arrow"/>
+                        </StackPanel>                        
+                    </RadioButton.Content>
+                </RadioButton>  
+            </StackPanel>
+            
+            
+
+            <Grid
+                Height="auto"
+                Width="auto"
+                Margin="0 20"
+                HorizontalAlignment="Center">
+
+                <ProgressBar
+                    Name="progressBar1"
+                    Width="300"
+                    Height="20"/>
+
+                <Label
+                    Name="label1"
+                    Content="0%"
+                    Foreground="White"
+                    HorizontalAlignment="Center"/>
+
+
+            </Grid>
+
+            <StackPanel Orientation="Horizontal"
+                        Height="auto"
+                        Width="auto"
+                        Margin="0 5"
+                        HorizontalAlignment="Center">
+
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                    HorizontalAlignment="Left"
+                    ToolTip="MaterialDesignFloatingActionMiniButton"
+                    Height="28"
+                    Width="28" 
+                    Click="Button_Click_1">
+                    <materialDesign:PackIcon
+                        Kind="Download"
+                        Height="20"
+                        Width="20" />
+                </Button>
+
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
