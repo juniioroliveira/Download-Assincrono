@@ -85,6 +85,10 @@ namespace DownloadArquivos
                 client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
 
                 //https://docs.google.com/uc?export=download&id=19vkiH9m42eHcGXd1FFfLpUhcdfaNGxG3
+                if(!Directory.Exists(Directory.GetCurrentDirectory() + @"\Downloaded"))
+                {
+                    Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Downloaded");
+                }
 
                 client.DownloadFileAsync(new Uri(textBox), Directory.GetCurrentDirectory() + @"\Downloaded\" + fileName);
                 
