@@ -29,7 +29,7 @@
                            Padding="0"
                            FontSize="18"
                            FontWeight="DemiBold"
-                           Foreground="#404040"/>
+                           Foreground="Black"/>
                     <TextBlock Text="Projeto modelo de download de arquivos utilizando ProgressBar com tipos de entrada local ou web."
                            Padding="0"
                            FontSize="13"
